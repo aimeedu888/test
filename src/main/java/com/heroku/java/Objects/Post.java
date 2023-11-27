@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity
 public class Post {
-	private String postTitle_;
+	private String postTitle;
 	private String imageUrl_;
 	private double itemPrice_;
 	private String description_;
@@ -19,7 +19,7 @@ public class Post {
 
 	public Post(String postTitle, String imageUrl, double itemPrice, String description, String seller, Boolean sold,
 			int user_id, int postID) {
-		this.postTitle_ = postTitle;
+		this.postTitle = postTitle;
 		this.imageUrl_ = imageUrl;
 		this.itemPrice_ = itemPrice;
 		this.description_ = description;
@@ -34,7 +34,7 @@ public class Post {
 	}
 	
 	public String getPostTitle() {
-		return postTitle_;
+		return postTitle;
 	}
 
 	public String getImageUrl() {
@@ -63,7 +63,7 @@ public class Post {
 
 	// Setters
 	public void setPostTitle(String postTitle) {
-		this.postTitle_ = postTitle;
+		this.postTitle = postTitle;
 	}
 
 	public void setImageUrl(String imageUrl) {

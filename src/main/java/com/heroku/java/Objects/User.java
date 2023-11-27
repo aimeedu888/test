@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class User {
-	private HashMap<String, Post> userPost; // Assuming Post is another class, adjust the type accordingly
-	private String username_;
+//	private HashMap<String, Post> userPost; // Assuming Post is another class, adjust the type accordingly
+	private String username;
 	private String password_;
 	private String email_;
 	@Id
@@ -18,26 +18,26 @@ public class User {
 	private int userID_;
 
 	public User(String username, String password, String email) {
-		this.username_ = username;
+		this.username = username;
 		this.password_ = password;
 		this.email_ = email;
-		this.userPost = new HashMap<>();
+//		this.userPost = new HashMap<>();
 	}
 
-	public HashMap<String, Post> getUserPost() {
-		return userPost;
-	}
-
-	public void setUserPost(HashMap<String, Post> userPost) {
-		this.userPost = userPost;
-	}
+//	public HashMap<String, Post> getUserPost() {
+//		return userPost;
+//	}
+//
+//	public void setUserPost(HashMap<String, Post> userPost) {
+//		this.userPost = userPost;
+//	}
 
 	public String getUsername() {
-		return username_;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		this.username_ = username;
+		this.username = username;
 	}
 
 	public String getPassword() {

@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.heroku.java.Objects.Post;
 
 public interface PostRepository extends CrudRepository<Post, Integer>{
-	Post findByTitle(String Title);
+	Post findByPostTitle(String postTitle_);
 }

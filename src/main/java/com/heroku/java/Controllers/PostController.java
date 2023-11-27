@@ -68,7 +68,7 @@ public class PostController {
 	}
 	
     @DeleteMapping("/api/user/deletePost")
-    public @ResponseBody String deleteUser(@RequestParam Integer postID) {
+    public @ResponseBody String deletePost(@RequestParam Integer postID) {
         if (postRepository.existsById(postID)) {
             postRepository.deleteById(postID);
             return "Post with ID " + postID + " deleted successfully";

@@ -29,6 +29,13 @@ public class PostController {
 	public PostController(PostRepository postRepository) {
 		this.postRepository = postRepository;
 	}
+	@PostMapping("/api/post/PostTest")
+	public @ResponseBody String test(@RequestParam String test) {
+		String temp = "test receive, the data is: ";
+		temp += test;
+		System.out.print(temp);
+		return temp;
+	}
 	
 	@GetMapping("/api/post/getAllPost")
 	public @ResponseBody Iterable<Post> getAllPosts() {

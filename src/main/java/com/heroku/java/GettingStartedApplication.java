@@ -33,11 +33,11 @@ public class GettingStartedApplication {
     }
     @GetMapping("homepage.css")
     public String homepage_css() {
-        return "css/homepage";
+        return "css/homepage.css";
     }
     @GetMapping("/homepage.js")
     public String homepage_js() {
-        return "js/homepage";
+        return "js/homepage.js";
     }
     
     //login1
@@ -99,11 +99,11 @@ public class GettingStartedApplication {
     }
     @GetMapping("/login-registeration/register.css")
     public String register_css() {
-        return "css/margins";
+        return "css/margins.css";
     }
     @GetMapping("/login-registeration/register.js")
     public String register_js() {
-        return "js/register";
+        return "js/register.js";
     }
     
     //closet
@@ -113,21 +113,21 @@ public class GettingStartedApplication {
     }
     @GetMapping("/closet.css")
     public String closet_css() {
-        return "css/closet";
+        return "css/closet.css";
     }
     @GetMapping("/closet.js")
     public String closet_js() {
-        return "js/closet";
+        return "js/closet.js";
     }
     
     //API
     @GetMapping("/login-registeration/api.js")
     public String api_js1() {
-        return "js/api";
+        return "js/api.js";
     }
     @GetMapping("/api.js")
     public String api_js2() {
-        return "js/api";
+        return "js/api.js";
     }
     
 

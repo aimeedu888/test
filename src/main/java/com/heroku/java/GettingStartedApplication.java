@@ -34,9 +34,9 @@ public class GettingStartedApplication {
     public String login() {
         return "login-registeration/login";
     }
-    @GetMapping("/login-registeration/login.css")
+    @GetMapping("/css/login.css")
     public String login_css() {
-        return "login-registeration/login.css";
+        return "css/login";
     }
     @GetMapping("/login-registeration/login.js")
     public String login_js() {

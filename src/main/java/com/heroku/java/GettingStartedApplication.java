@@ -109,6 +109,14 @@ public class GettingStartedApplication {
     public String register_js() {
         return "js/register.js";
     }
+    @GetMapping("/register.css")
+    public String register_css1() {
+        return "css/register.css";
+    }
+    @GetMapping("/register.js")
+    public String register_js1() {
+        return "js/register.js";
+    }
     
     //closet
     @GetMapping("/closet.html")

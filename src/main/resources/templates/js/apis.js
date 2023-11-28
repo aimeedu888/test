@@ -43,4 +43,4 @@ function test(xxx)
 }
 
 test("csci201");
-//console.log("aaaaaaaaaa");
+console.log("aaaaaaaaaa");

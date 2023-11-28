@@ -27,6 +27,7 @@ function test(xxx)
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'application/json',
+	    'Access-Control-Allow-Origin': '*',
 	  },
 	  body: JSON.stringify(sending)
 	})
@@ -41,5 +42,5 @@ function test(xxx)
 	  });
 }
 
-// test("csci201");
-console.log("aaaaaaaaaa");
+test("csci201");
+//console.log("aaaaaaaaaa");

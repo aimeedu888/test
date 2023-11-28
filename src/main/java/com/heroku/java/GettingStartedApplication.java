@@ -47,23 +47,23 @@ public class GettingStartedApplication {
     }
     @GetMapping("/login-registeration/login.css")
     public String login_css1() {
-        return "css/login";
+        return "css/login.css";
     }
     @GetMapping("/login-registeration/login.js")
     public String login_js1() {
-        return "js/login";
+        return "js/login.js";
     }
     @GetMapping("/login-registeration/login-register.css")
     public String login_register_js1() {
-        return "css/login-register";
+        return "css/login-register.css";
     }
     @GetMapping("/login-registeration/login-register-api.js")
     public String login_reg_api_js1() {
-        return "js/login-register-api";
+        return "js/login-register-api.js";
     }
     @GetMapping("/login-registeration/margins.css")
     public String margins_css1() {
-        return "css/margins";
+        return "css/margins.css";
     }
     
     //login 2
@@ -73,23 +73,23 @@ public class GettingStartedApplication {
     }
     @GetMapping("/login.css")
     public String login_css() {
-        return "css/login";
+        return "css/login.css";
     }
     @GetMapping("/login.js")
     public String login_js() {
-        return "js/login";
+        return "js/login.js";
     }
     @GetMapping("/login-register.css")
     public String login_register_js() {
-        return "css/login-register";
+        return "css/login-register.css";
     }
     @GetMapping("/login-register-api.js")
     public String login_reg_api_js() {
-        return "js/login-register-api";
+        return "js/login-register-api.js";
     }
     @GetMapping("/margins.css")
     public String margins_css() {
-        return "css/margins";
+        return "css/margins.css";
     }
     
     //register

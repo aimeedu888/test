@@ -33,7 +33,7 @@ function test(xxx)
 	})
 	  .then(response => response.text())
 	  .then(data => {
-	    console.log('api.js PostTest: \n' + data);
+	    document.getElementById("testing").innerHTML = data;
 	    // Handle success response from the server
 	  })
 	  .catch((error) => {

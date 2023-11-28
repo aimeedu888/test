@@ -22,9 +22,26 @@ public class GettingStartedApplication {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String loginhome() {
+        return "login-registeration/login";
+    }
+    @GetMapping("/homepage.html")
+    public String home() {
         return "homepage";
     }
+    @GetMapping("/login-registeration/login.html")
+    public String login() {
+        return "login-registeration/login";
+    }
+    @GetMapping("/login-registeration/register.html")
+    public String register() {
+        return "login-registeration/register";
+    }
+    @GetMapping("/closet.html")
+    public String closet() {
+        return "closet";
+    }
+    
 
     @GetMapping("/database")
     String database(Map<String, Object> model) {

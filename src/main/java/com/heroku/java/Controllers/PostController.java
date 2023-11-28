@@ -61,16 +61,14 @@ public class PostController {
 	}
 
 	@PostMapping("/api/post/addPost")
-	public @ResponseBody Integer addPost(@RequestParam String postTitle, @RequestParam String imageUrl,
-			@RequestParam Double itemPrice, @RequestParam String description, @RequestParam String seller, 
-			@RequestParam Integer user_id, @RequestParam Boolean sold) {
+	public @ResponseBody Integer addPost(@RequestParam Post p) {
+		String postTitle = p.getPostTitle();
 		for (Post t : postRepository.findAll()) {
 			if (t.getPostTitle().equals(postTitle)) {
 				System.out.println("Duplicate postTitle, cannot add Post");
 				return -1;
 			}
 		}
-		Post p = new Post(postTitle,imageUrl, itemPrice, description,seller, sold, user_id, 0);
 		postRepository.save(p);
 		return p.getPostID();
 	}

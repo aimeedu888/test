@@ -26,7 +26,7 @@ function test(xxx)
 		"test1": xxx,
 		"test2": "okkkk"
 	};
-	fetch('/api/post/PostTest', {
+	fetch('/api/post/PostTest?test1='+xxx, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',

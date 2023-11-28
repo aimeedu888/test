@@ -94,12 +94,16 @@ public class GettingStartedApplication {
     
     //register
     @GetMapping("/login-registeration/register.html")
+    public String register1() {
+        return "login-registeration/register";
+    }
+    @GetMapping("/register.html")
     public String register() {
         return "login-registeration/register";
     }
     @GetMapping("/login-registeration/register.css")
     public String register_css() {
-        return "css/margins.css";
+        return "css/register.css";
     }
     @GetMapping("/login-registeration/register.js")
     public String register_js() {

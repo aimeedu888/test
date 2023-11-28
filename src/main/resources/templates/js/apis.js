@@ -26,7 +26,6 @@ function test(xxx)
 	fetch('/api/post/PostTest', {
 	  method: 'POST',
 	  headers: {
-	    'Content-Type': 'application/json',
 	    'Access-Control-Allow-Origin': '*',
 	  },
 	  body: JSON.stringify(sending)

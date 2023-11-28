@@ -36,7 +36,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/api/post/getPostByUser")
-	public @ResponseBody List<Post> getPostsByUser(int user_id) {
+	public @ResponseBody List<Post> getPostsByUser(@RequestParam int user_id) {
 		Iterable<Post> allpost = postRepository.findAll();
 		List<Post> posts = new ArrayList<Post>();
 		for (Post p : allpost) {
@@ -48,7 +48,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/api/post/getPostByID")
-	public @ResponseBody Optional<Post> getPostsByID(int post_id) {
+	public @ResponseBody Optional<Post> getPostsByID(@RequestParam int post_id) {
 		return postRepository.findById(post_id);
 	}
 

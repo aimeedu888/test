@@ -29,10 +29,20 @@ public class GettingStartedApplication {
     public String home() {
         return "homepage";
     }
+    
     @GetMapping("/login-registeration/login.html")
     public String login() {
         return "login-registeration/login";
     }
+    @GetMapping("/login-registeration/login.css")
+    public String login_css() {
+        return "login-registeration/login.css";
+    }
+    @GetMapping("/login-registeration/login.js")
+    public String login_js() {
+        return "login-registeration/login.js";
+    }
+    
     @GetMapping("/login-registeration/register.html")
     public String register() {
         return "login-registeration/register";
@@ -41,6 +51,7 @@ public class GettingStartedApplication {
     public String closet() {
         return "closet";
     }
+    
     
 
     @GetMapping("/database")

@@ -22,14 +22,14 @@ function getAllPosts ()
 
 function test(xxx)
 {
-	sending = {"test": xxx}
+	const sending = xxx;
 	fetch('/api/post/PostTest', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
 	    'Access-Control-Allow-Origin': '*',
 	  },
-	  body: JSON.stringify(sending)
+	  body: sending
 	})
 	  .then(response => response.text())
 	  .then(data => {

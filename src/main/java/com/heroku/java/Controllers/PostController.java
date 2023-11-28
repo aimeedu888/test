@@ -30,7 +30,7 @@ public class PostController {
 		this.postRepository = postRepository;
 	}
 	
-	@PostMapping("/api/post/PostTest")
+	@PostMapping("/PostTest")
 	public @ResponseBody String test(@RequestParam String test) {
 		String temp = "test receive, the data is: ";
 		temp += test;

@@ -45,5 +45,5 @@ function test(xxx)
 	  });
 }
 
-test("csci201");
+test(201);
 console.log("aaaaaaaaaa");

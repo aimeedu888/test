@@ -22,7 +22,7 @@ function getAllPosts ()
 
 function test(xxx)
 {
-	sending = {test: xxx}
+	sending = {"test": xxx}
 	fetch('/api/post/PostTest', {
 	  method: 'POST',
 	  headers: {

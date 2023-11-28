@@ -45,5 +45,4 @@ function test(xxx)
 	  });
 }
 
-test(201);
-console.log("aaaaaaaaaa");
+// test(201); this work

@@ -133,13 +133,13 @@ public class GettingStartedApplication {
     }
     
     //API
-    @GetMapping("/login-registeration/api.js")
+    @GetMapping("/login-registeration/apis.js")
     public String api_js1() {
-        return "js/api.js";
+        return "js/apis.js";
     }
-    @GetMapping("/api.js")
+    @GetMapping("/apis.js")
     public String api_js2() {
-        return "js/api.js";
+        return "js/apis.js";
     }
     
 

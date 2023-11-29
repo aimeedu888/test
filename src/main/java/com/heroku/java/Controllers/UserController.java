@@ -37,11 +37,11 @@ public class UserController {
 		for (User t : userRepository.findAll()) {
 			if (t.getUsername().equals(username)) {
 				System.out.println("Duplicate username, cannot add user");
-				return -1;
+				return -3;
 			}
 			if (t.getEmail().equals(email)) {
 				System.out.println("Duplicate email, cannot add user");
-				return -1;
+				return -2;
 			}
 		}
 		User u = new User(username, password, email);

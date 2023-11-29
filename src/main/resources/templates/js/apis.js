@@ -219,7 +219,7 @@ function validateUser(username, password_){
 	.then(response => response.text())
 	  .then(data => {
 	    console.log('api.js validateUser: returns the message of validation: ' + data);
-	    // 1 means found, -1 means username incorrect, 0 means password incorrect
+	    // 1 means found, 0 means username not found, -1 means password incorrect
 	    return data;
 	  })
 	  .catch((error) => {

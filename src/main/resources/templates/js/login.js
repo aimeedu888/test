@@ -44,7 +44,7 @@ const autheticate = (username, password) => {
   console.log("Autheticating username and password combination");
   //CALL API FUNCTION HERE
   const temp = validateUser(username, password);
-  // 1 means found, -1 means username incorrect, 0 means password incorrect
+   // 1 means found, 0 means username not found, -1 means password incorrect
   if (temp == "1"){
 	  return true;
   }

@@ -5,7 +5,7 @@ const clearErrorMsgs = () => {
   }
 }
 
-document.querySelector('#login-form').onsubmit = () => {
+document.querySelector('#login-form').onsubmit = async () => {
   console.log("Attempting to submit login form");
   clearErrorMsgs();
   const username = document.getElementById("username");
@@ -25,7 +25,8 @@ document.querySelector('#login-form').onsubmit = () => {
     isFilled = false;
   }
   if (isFilled) {
-    if (autheticate(username.value, password.value)) {
+	  const temp = await autheticate(username.value, password.value)
+    if (temp) {
 		console.log("<<<<<<<true");
       //ADD LOGIC TO GO TO MAIN HOME PAGE
       return true;
@@ -42,7 +43,7 @@ document.querySelector('#login-form').onsubmit = () => {
 
 }
 
-const autheticate = async (username, password) => {
+ async function autheticate(username, password){
   console.log("Autheticating username and password combination");
   //CALL API FUNCTION HERE
   const temp =  await validateUser(username, password);

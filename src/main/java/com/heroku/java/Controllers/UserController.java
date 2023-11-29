@@ -20,17 +20,17 @@ public class UserController {
 		this.userRepository = userRepository;
 	}
 
-	@GetMapping("/api/user/getAllUsers")
+	@GetMapping("/getAllUsers")
 	public @ResponseBody Iterable<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 	
-	@GetMapping("/api/user/getUserByID")
+	@GetMapping("/getUserByID")
 	public @ResponseBody Optional<User> getUsers(@RequestParam Integer ID) {
 		return userRepository.findById(ID);
 	}
 
-	@PostMapping("/api/user/addUser")
+	@PostMapping("/addUser")
 	public @ResponseBody Integer addUser(@RequestParam User u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
@@ -48,7 +48,7 @@ public class UserController {
 		userRepository.save(u);
 		return u.getUserID();
 	}
-	@PostMapping("/api/user/validateUser")
+	@PostMapping("/validateUser")
 	public @ResponseBody String validateUser(@RequestParam User u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
@@ -65,7 +65,7 @@ public class UserController {
 		        return "0";
 		    }
 	}
-    @DeleteMapping("/api/user/deleteUser")
+    @DeleteMapping("/deleteUser")
     public @ResponseBody String deleteUser(@RequestParam Integer userID) {
         if (userRepository.existsById(userID)) {
             userRepository.deleteById(userID);

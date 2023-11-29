@@ -38,12 +38,12 @@ public class PostController {
 		return temp;
 	}
 	
-	@GetMapping("/api/post/getAllPost")
+	@GetMapping("/getAllPost")
 	public @ResponseBody Iterable<Post> getAllPosts() {
 		return postRepository.findAll();
 	}
 	
-	@GetMapping("/api/post/getPostByUser")
+	@GetMapping("/getPostByUser")
 	public @ResponseBody List<Post> getPostsByUser(@RequestParam int user_id) {
 		Iterable<Post> allpost = postRepository.findAll();
 		List<Post> posts = new ArrayList<Post>();
@@ -55,12 +55,12 @@ public class PostController {
 		return posts;
 	}
 	
-	@GetMapping("/api/post/getPostByID")
+	@GetMapping("/getPostByID")
 	public @ResponseBody Optional<Post> getPostsByID(@RequestParam int post_id) {
 		return postRepository.findById(post_id);
 	}
 
-	@PostMapping("/api/post/addPost")
+	@PostMapping("/addPost")
 	public @ResponseBody Integer addPost(@RequestParam Post p) {
 		String postTitle = p.getPostTitle();
 		for (Post t : postRepository.findAll()) {
@@ -73,7 +73,7 @@ public class PostController {
 		return p.getPostID();
 	}
 	
-    @DeleteMapping("/api/user/deletePost")
+    @DeleteMapping("/deletePost")
     public @ResponseBody String deletePost(@RequestParam Integer postID) {
         if (postRepository.existsById(postID)) {
             postRepository.deleteById(postID);

@@ -31,7 +31,7 @@ public class UserController {
 	}
 
 	@PostMapping("/addUser")
-	public @ResponseBody Integer addUser(@RequestBody User u) {
+	public Integer addUser(@RequestBody User u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
 		String email = u.getEmail();

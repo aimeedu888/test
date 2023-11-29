@@ -135,7 +135,7 @@ function test(xxx)
 	})
 	  .then(response => response.text())
 	  .then(data => {
-	    document.getElementById("testing").innerHTML = data;
+	    console.log(data);
 	    // Handle success response from the server
 	  })
 	  .catch((error) => {
@@ -197,7 +197,7 @@ function addUser(username, password_, email_){
 	return fetch('/api/user/addUser'+para, {
 	  method: 'POST',
 	  headers: {
-	   'Content-Type': 'application/json',
+	   'Content-Type': 'text/plain',
 	    'Access-Control-Allow-Origin': '*',
 	  },
 	 	body: para

@@ -100,7 +100,7 @@ function addPost(){
 	  });
 }
 
-function deletePost(postId){
+function deletePostByID(postId){
 	return fetch('/api/post/deletePost?postID='+postId, {
 	  method: 'DELETE',
 	  headers: {

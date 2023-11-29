@@ -11,17 +11,17 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
 //	private HashMap<String, Post> userPost; // Assuming Post is another class, adjust the type accordingly
-	@Id
+	
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password_")
 	private String password_;
 	@Column(name = "email_")
 	private String email_;
-//	@Id
-//	@Column(name = "userid_")
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-//	private int userid_;
+	@Id
+	@Column(name = "userid_")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int userid_;
 
 	public User(String username, String password, String email) {
 		this.username = username;
@@ -62,11 +62,11 @@ public class User {
 		this.email_ = email;
 	}
 
-//	public int getUserID() {
-//		return userid_;
-//	}
-//
-//	public void setUserID(int userID) {
-//		this.userid_ = userID;
-//	}
+	public int getUserID() {
+		return userid_;
+	}
+
+	public void setUserID(int userID) {
+		this.userid_ = userID;
+	}
 }

@@ -31,23 +31,23 @@ public class UserController {
 	}
 
 	@PostMapping("/addUser")
-	public @ResponseBody String addUser(String username, String password, String email) {
+	public @ResponseBody int addUser(String username, String password, String email) {
 		System.out.println("In UserController addUser: ");
 		System.out.println(username + password + email);
 		for (User t : userRepository.findAll()) {
 			if (t.getUsername().equals(username)) {
 				System.out.println("Duplicate username, cannot add user");
-				return "-1";
+				return -1;
 			}
 			if (t.getEmail().equals(email)) {
 				System.out.println("Duplicate email, cannot add user");
-				return "-1";
+				return -1;
 			}
 		}
 		User u = new User(username, password, email);
 		userRepository.save(u);
-		System.out.println("UserController: added user: "+u.getUsername());
-		return u.getUsername();
+		System.out.println("UserController: added user: "+u.getUserID());
+		return u.getUserID();
 	}
 	@PostMapping("/validateUser")
 	public @ResponseBody String validateUser(String username, String password) {

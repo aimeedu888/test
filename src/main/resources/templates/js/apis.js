@@ -119,13 +119,13 @@ function deletePost(postId){
 	  });
 }
 
-function test(xxx)
+function test(xxx, xxx2)
 {
 	const sending = {
 		"test1": xxx,
 		"test2": "okkkk"
 	}; // this does not matter
-	return fetch('/api/post/PostTest?test1='+xxx, {
+	return fetch('/api/post/PostTest?test1='+xxx+'test2'+xxx2, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -257,4 +257,4 @@ function deleteUser(userID){
 }
 
 
-test(201); //this work
+test(201, "testing"); //this work

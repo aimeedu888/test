@@ -31,9 +31,10 @@ public class PostController {
 	}
 	
 	@PostMapping("/PostTest")
-	public @ResponseBody String test(int test1) {
+	public @ResponseBody String test(int test1, String test2) {
 		String temp = "test receive, the data is: ";
 		temp += String.valueOf(test1);
+		temp += " "+ test2;
 		System.out.print(temp);
 		return temp;
 	}

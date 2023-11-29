@@ -3,7 +3,7 @@
 // PostController
 function getAllPosts ()
 {
-	fetch('/api/post/getAllPost', {
+	return fetch('/api/post/getAllPost', {
 	  method: 'GET',
 	  headers: {
 	    'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ function getAllPosts ()
 }
 
 function getPostsByUser(user_id){
-	fetch('/api/post/getPostByUser?user_id='+user_id, {
+	return fetch('/api/post/getPostByUser?user_id='+user_id, {
 	  method: 'GET',
 	  headers: {
 	    'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function getPostsByUser(user_id){
 }
 
 function getPostsByID(post_id){
-	fetch('/api/post/getPostByID?post_id='+post_id, {
+	return fetch('/api/post/getPostByID?post_id='+post_id, {
 	  method: 'GET',
 	  headers: {
 	    'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function addPost(){
 		"sold_": sold_,
 		"user_id": user_id,		
 	};
-	fetch('/api/post/addPost', {
+	return fetch('/api/post/addPost', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -101,7 +101,7 @@ function addPost(){
 }
 
 function deletePost(postId){
-	fetch('/api/post/deletePost?postID='+postId, {
+	return fetch('/api/post/deletePost?postID='+postId, {
 	  method: 'DELETE',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -125,7 +125,7 @@ function test(xxx)
 		"test1": xxx,
 		"test2": "okkkk"
 	}; // this does not matter
-	fetch('/api/post/PostTest?test1='+xxx, {
+	return fetch('/api/post/PostTest?test1='+xxx, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -150,7 +150,7 @@ function test(xxx)
 
 function getAllUsers ()
 {
-	fetch('/api/user/getAllUsers', {
+	return fetch('/api/user/getAllUsers', {
 	  method: 'GET',
 	  headers: {
 	    'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function getAllUsers ()
 }
 
 function getUsers(ID){
-	fetch('/api/user/getUserByID?ID='+ID, {
+	return fetch('/api/user/getUserByID?ID='+ID, {
 	  method: 'GET',
 	  headers: {
 	    'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ function addUser(username, password_, email_){
 		"password_": password_,
 		"email_": email_,	
 	};
-	fetch('/api/user/addUser', {
+	return fetch('/api/user/addUser', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -223,7 +223,7 @@ function validateUser(username, password_, email_){
 		"password_": password_,
 		"email_": email_,	
 	};
-	fetch('/api/user/validateUser', {
+	return fetch('/api/user/validateUser', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -243,7 +243,7 @@ function validateUser(username, password_, email_){
 }
 
 function deleteUser(userID){
-	fetch('/api/post/deletePost?userID='+userID, {
+	return fetch('/api/post/deletePost?userID='+userID, {
 	  method: 'DELETE',
 	  headers: {
 	    'Content-Type': 'text/plain',

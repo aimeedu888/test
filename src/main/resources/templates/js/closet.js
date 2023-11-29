@@ -155,7 +155,7 @@ const deletePost = () => {
   hideForm();
 }
 //renders a bunch of cards with these paramaters for seeing if it looks ok
-const test = () => {
+const testCreation = () => {
   const newCard = createCard("testing1", "https://media.macphun.com/img/uploads/customer/how-to/608/15542038745ca344e267fb80.28757312.jpg?q=85&w=1340", "some details some details some details some details some details some details some details some details", 10.99, 1);
   const cardContainerRow = document.getElementById("posts-container");
   cardContainerRow.appendChild(newCard);

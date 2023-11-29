@@ -156,7 +156,7 @@ public class GettingStartedApplication {
                 output.add("Read from DB: " + resultSet.getTimestamp("tick"));
             }
             
-            String user = "CREATE TABLE IF NOT EXISTS u1_0 (user_id, email_, password_, username)";
+            String user = "CREATE TABLE IF NOT EXISTS u1_0 (user_id email_ password_ username)";
             statement.executeUpdate(user);
             
             

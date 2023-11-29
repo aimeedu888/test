@@ -2,6 +2,7 @@ package com.heroku.java.Objects;
 
 import java.util.HashMap;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,8 +11,11 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
 //	private HashMap<String, Post> userPost; // Assuming Post is another class, adjust the type accordingly
+	@Column(name = "username")
 	private String username;
+	@Column(name = "password_")
 	private String password_;
+	@Column(name = "email_")
 	private String email_;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

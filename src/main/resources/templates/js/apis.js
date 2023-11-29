@@ -216,7 +216,7 @@ function addUser(username, password_, email_){
 	  });
 }
 
-function validateUser(){
+function validateUser(username, password_, email_){
 	// all info about the User
 	const username = "";
 	const password_ = "";

@@ -6,7 +6,8 @@ const clearErrorMsgs = () => {
 	}
 }
 
-document.querySelector('#register-form').onsubmit = () => {
+document.querySelector('#register-form').onsubmit = (e) => {
+	e.preventDefault();
 	console.log("Attempting to submit register form");
 	clearErrorMsgs();
 	const email = document.getElementById("email");

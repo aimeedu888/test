@@ -20,8 +20,8 @@ public class UserController {
 		this.userRepository = userRepository;
 	}
 
-	@GetMapping("/api/user/getUser")
-	public @ResponseBody Iterable<User> getAllUsers(@RequestParam Integer ID) {
+	@GetMapping("/api/user/getAllUsers")
+	public @ResponseBody Iterable<User> getAllUsers() {
 		return userRepository.findAll();
 	}
 	
@@ -31,8 +31,10 @@ public class UserController {
 	}
 
 	@PostMapping("/api/user/addUser")
-	public @ResponseBody Integer addUser(@RequestParam String username, @RequestParam String password,
-			@RequestParam String email) {
+	public @ResponseBody Integer addUser(@RequestParam User u) {
+		String username = u.getUsername();
+		String password = u.getPassword();
+		String email = u.getEmail();
 		for (User t : userRepository.findAll()) {
 			if (t.getUsername().equals(username)) {
 				System.out.println("Duplicate username, cannot add user");
@@ -43,23 +45,25 @@ public class UserController {
 				return -1;
 			}
 		}
-		User u = new User(username, password, email);
 		userRepository.save(u);
 		return u.getUserID();
 	}
-	@GetMapping("/api/user/validateUser")
-	public @ResponseBody User validateUser(@RequestParam String username, @RequestParam String password) {
-		 User user = userRepository.findByUsername(username);
+	@PostMapping("/api/user/validateUser")
+	public @ResponseBody String validateUser(@RequestParam User u) {
+		String username = u.getUsername();
+		String password = u.getPassword();
+		User user = userRepository.findByUsername(username);
 		    if (user != null) {
 		        if (user.getPassword().equals(password)) {
-		            return user;
+		            return "1";
 		        } else {
 		            System.out.println("Incorrect password for user: " + username);
+		            return "-1";
 		        }
 		    } else {
 		        System.out.println("User not found: " + username);
+		        return "0";
 		    }
-		    return null;
 	}
     @DeleteMapping("/api/user/deleteUser")
     public @ResponseBody String deleteUser(@RequestParam Integer userID) {

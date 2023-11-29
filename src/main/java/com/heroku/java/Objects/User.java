@@ -7,8 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "u1_0")
 public class User {
 //	private HashMap<String, Post> userPost; // Assuming Post is another class, adjust the type accordingly
 	

@@ -143,7 +143,7 @@ public class GettingStartedApplication {
     }
     
     @GetMapping("/cleanUser")
-    public String cleanUser() {
+    public void cleanUser() {
     	try (Connection connection = dataSource.getConnection()) {
             final var statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM u1_0");
@@ -152,10 +152,9 @@ public class GettingStartedApplication {
 //            String user = "CREATE TABLE IF NOT EXISTS u1_0 (user_id email_ password_ username)";
 //            statement.executeUpdate(user);
             
-            return "clean_user_table";
+            System.out.println("clean_user_table");
 
         } catch (Throwable t) {
-            return "error";
         }
     }
 

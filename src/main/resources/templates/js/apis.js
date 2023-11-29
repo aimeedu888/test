@@ -200,6 +200,7 @@ function addUser(username, password_, email_){
 	   'Content-Type': 'application/json',
 	    'Access-Control-Allow-Origin': '*',
 	  },
+	 	body: para
 	})
 	.then(response => response.text())
 	  .then(data => {

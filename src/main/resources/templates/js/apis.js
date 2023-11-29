@@ -204,28 +204,25 @@ function addUser(username, password_, email_){
 	  });
 }
 
-function validateUser(username, password_){
+async function validateUser(username, password_){
 	// all info about the User
 	para = 
 		"?username="+ username+
 		"&password="+ password_;
-	return fetch('/api/user/validateUser'+para, {
-	  method: 'Get',
-	  headers: {
-	    'Content-Type': 'text/plain',
-	    'Access-Control-Allow-Origin': '*',
-	  },
-	})
-	.then(response => response.text())
-	  .then(data => {
-	    console.log('api.js validateUser: returns the message of validation: ' + data);
-	    // 1 means found, 0 means username not found, -1 means password incorrect
-	    return data;
-	  })
-	  .catch((error) => {
-	    console.error('Error:', error);
-	    // Handle error
-	  });
+	try {
+        const response = await fetch('/api/user/validateUser' + para, {
+            method: 'Get',
+            headers: {
+                'Content-Type': 'text/plain',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
+        const data = await response.text();
+        console.log('api.js validateUser: returns the message of validation: ' + data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 function deleteUser(userID){

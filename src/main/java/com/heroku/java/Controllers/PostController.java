@@ -45,7 +45,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/getPostByUser")
-	public @ResponseBody List<Post> getPostsByUser(@RequestParam int user_id) {
+	public @ResponseBody List<Post> getPostsByUser(int user_id) {
 		Iterable<Post> allpost = postRepository.findAll();
 		List<Post> posts = new ArrayList<Post>();
 		for (Post p : allpost) {
@@ -57,25 +57,35 @@ public class PostController {
 	}
 	
 	@GetMapping("/getPostByID")
-	public @ResponseBody Optional<Post> getPostsByID(@RequestParam int post_id) {
+	public @ResponseBody Optional<Post> getPostsByID(int post_id) {
 		return postRepository.findById(post_id);
 	}
 
 	@PostMapping("/addPost")
-	public @ResponseBody Integer addPost(@RequestParam Post p) {
-		String postTitle = p.getPostTitle();
+	public @ResponseBody Integer addPost(String postTitle, String imageUrl_, String itemPrice_, String description_, String seller_, String sold_, String user_id) {
+		
 		for (Post t : postRepository.findAll()) {
 			if (t.getPostTitle().equals(postTitle)) {
 				System.out.println("Duplicate postTitle, cannot add Post");
 				return -1;
 			}
 		}
+		
+		// create the Post object
+		Double itemPrice = Double.parseDouble(itemPrice_);
+		boolean sold = true;
+		if (sold_.equals("0")) {
+			sold = false;
+		}
+		int u_id = Integer.parseInt(user_id);
+		Post p = new Post(postTitle, imageUrl_, itemPrice, description_,sold, u_id);
+		
 		postRepository.save(p);
 		return p.getPostID();
 	}
 	
     @DeleteMapping("/deletePost")
-    public @ResponseBody String deletePost(@RequestParam Integer postID) {
+    public @ResponseBody String deletePost(Integer postID) {
         if (postRepository.existsById(postID)) {
             postRepository.deleteById(postID);
             return "Post with ID " + postID + " deleted successfully";

@@ -56,6 +56,7 @@ function getPostsByID(post_id){
 	    console.log('api.js getPostsByID: need implementation, ' +
 	    'data should be a json of the post: \n\n' + data.tostring());
 	    // Handle success response from the server
+	    return data;
 	  })
 	  .catch((error) => {
 	    console.error('Error:', error);
@@ -63,25 +64,16 @@ function getPostsByID(post_id){
 	  });
 }
 
-function addPost(){
-	// all info about the post
-	const postTitle = "";
-	const imageUrl_ = "";
-	const itemPrice_ = "";
-	const description_ = '';
-	const seller_ = '';
-	const sold_ = '';
-	const user_id = '';
-	sending = {
-		"postTitle": postTitle,
-		"imageUrl_": imageUrl_,
-		"itemPrice_": itemPrice_,
-		"description_": description_,
-		"seller_": seller_,
-		"sold_": sold_,
-		"user_id": user_id,		
-	};
-	return fetch('/api/post/addPost', {
+function addPost(postTitle, imageUrl_, itemPrice_, description_,sold_,user_id){
+
+	para = '?'+
+		"postTitle=" + postTitle +
+		"&imageUrl_=" + imageUrl_ +
+		"&itemPrice_="+ itemPrice_+
+		"&description_=" +description_+
+		"&sold_="+ sold_+
+		"&user_id="+ user_id;
+	return fetch('/api/post/addPost'+para, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -212,7 +204,7 @@ function addUser(username, password_, email_){
 	  });
 }
 
-function validateUser(username, password_, email_){
+function validateUser(username, password_){
 	// all info about the User
 	para = 
 		"?username="+ username+
@@ -228,6 +220,7 @@ function validateUser(username, password_, email_){
 	  .then(data => {
 	    console.log('api.js validateUser: returns the message of validation: ' + data);
 	    // 1 means found, -1 means username incorrect, 0 means password incorrect
+	    return data;
 	  })
 	  .catch((error) => {
 	    console.error('Error:', error);
@@ -255,4 +248,4 @@ function deleteUser(userID){
 }
 
 
-test(201, "testing"); //this work
+// test(201, "testing"); //this work

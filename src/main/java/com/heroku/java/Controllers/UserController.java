@@ -67,7 +67,7 @@ public class UserController {
 		    }
 	}
     @DeleteMapping("/deleteUser")
-    public @ResponseBody String deleteUser(@RequestParam Integer userID) {
+    public @ResponseBody String deleteUser(Integer userID) {
         if (userRepository.existsById(userID)) {
             userRepository.deleteById(userID);
             return "User with ID " + userID + " deleted successfully";

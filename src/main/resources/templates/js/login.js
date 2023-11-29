@@ -43,7 +43,14 @@ document.querySelector('#login-form').onsubmit = () => {
 const autheticate = (username, password) => {
   console.log("Autheticating username and password combination");
   //CALL API FUNCTION HERE
-  return true;
+  const temp = validateUser(username, password);
+  // 1 means found, -1 means username incorrect, 0 means password incorrect
+  if (temp == "1"){
+	  return true;
+  }
+  else{
+	  return false;
+  }
 }
 
 function setLocalStorage() {

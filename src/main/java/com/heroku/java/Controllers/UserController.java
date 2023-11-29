@@ -56,14 +56,7 @@ public class UserController {
 	
 	@GetMapping("/validateUser")
 	public @ResponseBody String validateUser(@RequestParam String username, @RequestParam String password) {
-		System.out.print("In UserContrller /validateUser, username is " + username);
 		User user = userRepository.findByUsername(username);
-		if (user==null) {
-			System.out.println("In UserContrller /validateUser, user not found");
-		}
-		else {
-			System.out.println("In UserContrller /validateUser, userid is "+user.getUserID());
-		}
 			if (user != null) {
 		        if (user.getPassword().equals(password)) {
 		        	System.out.println("find user: " + username);

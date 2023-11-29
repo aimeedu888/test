@@ -46,9 +46,11 @@ const autheticate = (username, password) => {
   const temp = validateUser(username, password);
    // 1 means found, 0 means username not found, -1 means password incorrect
   if (temp == "1"){
+	  console.log("autheticate: 1");
 	  return true;
   }
   else{
+	  console.log("autheticate: 2");
 	  return false;
   }
 }

@@ -25,6 +25,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int userid_;
 
+	public User() {}
+	
 	public User(String username, String password, String email) {
 		this.username = username;
 		this.password_ = password;

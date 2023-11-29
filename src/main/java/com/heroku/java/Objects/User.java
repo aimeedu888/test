@@ -19,7 +19,7 @@ public class User {
 	private String email_;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int userID_;
+	private int userid_;
 
 	public User(String username, String password, String email) {
 		this.username = username;
@@ -61,10 +61,10 @@ public class User {
 	}
 
 	public int getUserID() {
-		return userID_;
+		return userid_;
 	}
 
 	public void setUserID(int userID) {
-		this.userID_ = userID;
+		this.userid_ = userID;
 	}
 }

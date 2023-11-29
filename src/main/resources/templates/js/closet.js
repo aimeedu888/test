@@ -147,6 +147,13 @@ const hideFormC = () => {
   overlay.classList.remove('overlay-visible');
 }
 //CREATE POST FORM LOGIC END
+
+const deletePost = () => {
+  const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
+  //CALL DELETE API HERE 
+  cardElements.remove();
+  hideForm();
+}
 //renders a bunch of cards with these paramaters for seeing if it looks ok
 const test = () => {
   const newCard = createCard("testing1", "https://media.macphun.com/img/uploads/customer/how-to/608/15542038745ca344e267fb80.28757312.jpg?q=85&w=1340", "some details some details some details some details some details some details some details some details", 10.99, 1);

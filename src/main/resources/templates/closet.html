@@ -19,11 +19,11 @@
     </div>
     <div id="header-buttons-container" class="d-flex flex-row justify-content-between align-items-center">
       <button id="create-posts-button" onclick="showFormC()">Create Posts</button>
-      <button id="recent-posts-button">Recent Posts</button>
+      <button id="recent-posts-button" onclick="window.location.href='./homepage.html'">Recent Posts</button>
     </div>
   </header>
   <hr>
-  <h2 class="mt-4 mb-4 pl-5">My Closet</h2>
+  <h2 class=" mt-4 mb-4 pl-5">My Closet</h2>
   <div class="container-fluid">
     <div id="posts-container" class="row">
     </div>
@@ -45,7 +45,11 @@
         <label class="m-0 font-italic small" for="price">Price</label>
         <input type="number" class="w-100" id="price" name="price" step="any"></textarea>
       </div>
-      <input class="submit-buttons bg-color-rich-black mt-3 btn btn-primary" type="submit" value="Add">
+      <div class="d-flex justify-content-between">
+        <input class="submit-buttons bg-color-rich-black mt-3 btn btn-primary" type="submit" value="Add">
+        <button class="submit-buttons mt-3 btn btn-danger" id="delete-button" type="button"
+          onclick="deletePost()">Delete</button>
+      </div>
     </form>
   </div>
   <div id="overlay2" class="d-flex align-items-center justify-content-center overlay-hidden">

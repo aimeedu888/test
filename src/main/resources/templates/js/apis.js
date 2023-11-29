@@ -194,7 +194,7 @@ function addUser(username, password_, email_){
 	para = "?username="+ username+
 		"&password=" + password_+
 		"&email="+ email_;
-	return fetch('/api/user/addUser'+para, {
+	return fetch('/api/user/addUser?username='+username+'&password='+password_+'&email='+email_, {
 	  method: 'POST',
 	  headers: {
 	   'Content-Type': 'text/plain',

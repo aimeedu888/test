@@ -191,18 +191,15 @@ function getUsers(ID){
 
 function addUser(username, password_, email_){
 	// all info about the User
-	sending = {
-		"username": username,
-		"password_": password_,
-		"email_": email_,	
-	};
-	return fetch('/api/user/addUser', {
+	para = "?username="+ username,
+		"&password=" + password_,
+		"&email="+ email_;
+	return fetch('/api/user/addUser'+para, {
 	  method: 'POST',
 	  headers: {
 	   'Content-Type': 'application/json',
 	    'Access-Control-Allow-Origin': '*',
 	  },
-	  body: JSON.stringify(sending)
 	})
 	.then(response => response.text())
 	  .then(data => {
@@ -218,18 +215,15 @@ function addUser(username, password_, email_){
 
 function validateUser(username, password_, email_){
 	// all info about the User
-	sending = {
-		"username": username,
-		"password_": password_,
-		"email_": email_,	
-	};
+	para = 
+		"?username="+ username,
+		"&password="+ password_;
 	return fetch('/api/user/validateUser', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
 	    'Access-Control-Allow-Origin': '*',
 	  },
-	  body: JSON.stringify(sending)
 	})
 	.then(response => response.text())
 	  .then(data => {

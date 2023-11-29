@@ -31,7 +31,7 @@ public class UserController {
 	}
 
 	@PostMapping("/addUser")
-	public Integer addUser(@RequestBody User u) {
+	public @ResponseBody Integer addUser(@RequestBody User u) {
 		String username = u.getUsername();
 		String password = u.getPassword();
 		String email = u.getEmail();
@@ -47,16 +47,16 @@ public class UserController {
 				return -1;
 			}
 		}
+//		User u = new User(username, password, email);
 		userRepository.save(u);
 		return u.getUserID();
 	}
 	@PostMapping("/validateUser")
-	public @ResponseBody String validateUser(@RequestParam User u) {
-		String username = u.getUsername();
-		String password = u.getPassword();
+	public @ResponseBody String validateUser(String username, String password) {
 		User user = userRepository.findByUsername(username);
 		    if (user != null) {
 		        if (user.getPassword().equals(password)) {
+		        	System.out.println("find user: " + username);
 		            return "1";
 		        } else {
 		            System.out.println("Incorrect password for user: " + username);

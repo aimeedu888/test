@@ -119,13 +119,13 @@ function deletePost(postId){
 	  });
 }
 
-function test(xxx)
+function test(xxx, xxx2)
 {
 	const sending = {
 		"test1": xxx,
 		"test2": "okkkk"
 	}; // this does not matter
-	return fetch('/api/post/PostTest?test1='+xxx, {
+	return fetch('/api/post/PostTest?test1='+xxx+'&test2='+xxx2, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
@@ -135,7 +135,7 @@ function test(xxx)
 	})
 	  .then(response => response.text())
 	  .then(data => {
-	    document.getElementById("testing").innerHTML = data;
+	    console.log(data);
 	    // Handle success response from the server
 	  })
 	  .catch((error) => {
@@ -193,16 +193,17 @@ function addUser(username, password_, email_){
 	// all info about the User
 	sending = {
 		"username": username,
-		"password_": password_,
-		"email_": email_,	
-	};
+		"password_" : password_,
+		"email_": email_,
+	}
+	para = '?username='+username+'&password='+password_+'&email='+email_;
 	return fetch('/api/user/addUser', {
 	  method: 'POST',
 	  headers: {
 	   'Content-Type': 'application/json',
 	    'Access-Control-Allow-Origin': '*',
 	  },
-	  body: JSON.stringify(sending)
+	 	body: JSON.stringify(sending)
 	})
 	.then(response => response.text())
 	  .then(data => {
@@ -218,18 +219,15 @@ function addUser(username, password_, email_){
 
 function validateUser(username, password_, email_){
 	// all info about the User
-	sending = {
-		"username": username,
-		"password_": password_,
-		"email_": email_,	
-	};
+	para = 
+		"?username="+ username+
+		"&password="+ password_;
 	return fetch('/api/user/validateUser', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',
 	    'Access-Control-Allow-Origin': '*',
 	  },
-	  body: JSON.stringify(sending)
 	})
 	.then(response => response.text())
 	  .then(data => {
@@ -262,4 +260,4 @@ function deleteUser(userID){
 }
 
 
-// test(201); this work
+test(201, "testing"); //this work

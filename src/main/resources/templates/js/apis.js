@@ -193,7 +193,7 @@ function addUser(username, password_, email_){
 	// all info about the User
 	sending = {
 		"username": username,
-		"password=_" : password_,
+		"password_" : password_,
 		"email_": email_
 	}
 	para = '?username='+username+'&password='+password_+'&email='+email_;

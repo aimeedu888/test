@@ -209,7 +209,7 @@ function validateUser(username, password_){
 	para = 
 		"?username="+ username+
 		"&password="+ password_;
-	return fetch('/api/user/validateUser', {
+	return fetch('/api/user/validateUser'+para, {
 	  method: 'Get',
 	  headers: {
 	    'Content-Type': 'text/plain',

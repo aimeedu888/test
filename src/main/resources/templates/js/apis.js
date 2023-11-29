@@ -196,6 +196,7 @@ function addUser(username, password_, email_){
 		"password_": password_,
 		"email_": email_,	
 	};
+	console.log(JSON.stringify(sending).toString() + " Using toString() " + sending);
 	return fetch('/api/user/addUser', {
 	  method: 'POST',
 	  headers: {

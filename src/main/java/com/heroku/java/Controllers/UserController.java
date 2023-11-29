@@ -31,7 +31,10 @@ public class UserController {
 	}
 
 	@PostMapping("/addUser")
-	public @ResponseBody Integer addUser(String username, String password, String email) {
+	public @ResponseBody Integer addUser(@RequestBody User u) {
+		String username = u.getUsername();
+		String password = u.getPassword();
+		String email = u.getEmail();
 		System.out.println("HEREE");
 		System.out.println(username + password+email);
 		for (User t : userRepository.findAll()) {
@@ -44,7 +47,7 @@ public class UserController {
 				return -1;
 			}
 		}
-		User u = new User(username, password, email);
+//		User u = new User(username, password, email);
 		userRepository.save(u);
 		return u.getUserID();
 	}

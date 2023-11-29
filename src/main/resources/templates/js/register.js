@@ -39,8 +39,10 @@ document.querySelector('#register-form').onsubmit = () => {
     }
   }
   if (isValid) {
-    addNewUser(email, username, password);
-    return true;
+    const ID = addNewUser(email, username, password);
+    localStorage.setItem("currentUser", ID);
+    console.log(localStorage.getItem("currentUser") + " added");
+    return false;
   }
   else {
     return false;
@@ -51,5 +53,6 @@ document.querySelector('#register-form').onsubmit = () => {
 const addNewUser = (email, username, password) => {
   console.log("Uploading new user: " + email + " " + username + " " + password);
   //CALL API FUNCTION HERE
-  return true;
+  const ID = addUser(username, password, email); 
+  return ID;
 }

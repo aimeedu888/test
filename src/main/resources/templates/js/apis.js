@@ -189,11 +189,8 @@ function getUsers(ID){
 	  });
 }
 
-function addUser(){
+function addUser(username, password_, email_){
 	// all info about the User
-	const username = "";
-	const password_ = "";
-	const email_ = "";
 	sending = {
 		"username": username,
 		"password_": password_,
@@ -210,6 +207,7 @@ function addUser(){
 	.then(response => response.text())
 	  .then(data => {
 	    console.log('api.js addUser: returns the id of the added user:' + data);
+	    return data;
 	    // Handle success response from the server
 	  })
 	  .catch((error) => {

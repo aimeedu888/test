@@ -218,7 +218,7 @@ function validateUser(username, password_, email_){
 		"?username="+ username+
 		"&password="+ password_;
 	return fetch('/api/user/validateUser', {
-	  method: 'POST',
+	  method: 'Get',
 	  headers: {
 	    'Content-Type': 'text/plain',
 	    'Access-Control-Allow-Origin': '*',

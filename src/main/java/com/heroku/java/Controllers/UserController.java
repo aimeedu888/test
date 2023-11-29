@@ -49,7 +49,8 @@ public class UserController {
 		System.out.println("UserController: added user: "+u.getUserID());
 		return u.getUserID();
 	}
-	@PostMapping("/validateUser")
+	
+	@GetMapping("/validateUser")
 	public @ResponseBody String validateUser(String username, String password) {
 		User user = userRepository.findByUsername(username);
 		    if (user != null) {

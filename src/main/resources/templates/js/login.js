@@ -26,11 +26,13 @@ document.querySelector('#login-form').onsubmit = () => {
   }
   if (isFilled) {
     if (autheticate(username.value, password.value)) {
+		console.log("<<<<<<<true");
       //ADD LOGIC TO GO TO MAIN HOME PAGE
       return true;
     }
     else {
       authError.style.visibility = "visible";
+      console.log("<<<<<<<false");
       return false;
     }
   }

@@ -43,8 +43,8 @@ document.querySelector('#register-form').onsubmit = (e) => {
 		addNewUser(email.value, username.value, password.value).then(ID => {
 			localStorage.setItem("currentUser", ID);
 			console.log(localStorage.getItem("currentUser") + " added");
+			return false;
 		})
-		return false;
 	}
 	else {
 		return false;

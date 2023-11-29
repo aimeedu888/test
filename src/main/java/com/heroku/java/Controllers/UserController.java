@@ -35,6 +35,8 @@ public class UserController {
 		String username = u.getUsername();
 		String password = u.getPassword();
 		String email = u.getEmail();
+		System.out.println("HEREE");
+		System.out.println(username + password+email);
 		for (User t : userRepository.findAll()) {
 			if (t.getUsername().equals(username)) {
 				System.out.println("Duplicate username, cannot add user");

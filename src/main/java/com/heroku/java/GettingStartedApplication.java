@@ -142,6 +142,22 @@ public class GettingStartedApplication {
         return "js/apis.js";
     }
     
+    @GetMapping("/cleanUser")
+    public String cleanUser() {
+    	try (Connection connection = dataSource.getConnection()) {
+            final var statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM u1_0");
+            System.out.println("clean user table");
+            
+//            String user = "CREATE TABLE IF NOT EXISTS u1_0 (user_id email_ password_ username)";
+//            statement.executeUpdate(user);
+            
+            return "clean_user_table";
+
+        } catch (Throwable t) {
+            return "error";
+        }
+    }
 
     @GetMapping("/database")
     String database(Map<String, Object> model) {

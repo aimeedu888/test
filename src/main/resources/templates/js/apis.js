@@ -201,7 +201,7 @@ function addUser(username, password_, email_){
 	return fetch('/api/user/addUser', {
 	  method: 'POST',
 	  headers: {
-	   'Content-Type': 'text/plain',
+	   'Content-Type': 'application/json',
 	    'Access-Control-Allow-Origin': '*',
 	  },
 	 	body: JSON.stringify(sending)

@@ -125,7 +125,7 @@ function test(xxx, xxx2)
 		"test1": xxx,
 		"test2": "okkkk"
 	}; // this does not matter
-	return fetch('/api/post/PostTest?test1='+xxx+'test2'+xxx2, {
+	return fetch('/api/post/PostTest?test1='+xxx+'&test2='+xxx2, {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'text/plain',

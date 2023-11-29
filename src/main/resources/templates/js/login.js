@@ -40,10 +40,10 @@ document.querySelector('#login-form').onsubmit = () => {
 
 }
 
-const autheticate = (username, password) => {
+const autheticate = async (username, password) => {
   console.log("Autheticating username and password combination");
   //CALL API FUNCTION HERE
-  const temp = validateUser(username, password);
+  const temp =  await validateUser(username, password);
    // 1 means found, 0 means username not found, -1 means password incorrect
    console.log("autheticate: temp is: "+temp);
   if (temp == "1"){

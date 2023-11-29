@@ -18,6 +18,7 @@ public class User {
 	@Column(name = "email_")
 	private String email_;
 	@Id
+	@Column(name = "userid_")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int userid_;
 

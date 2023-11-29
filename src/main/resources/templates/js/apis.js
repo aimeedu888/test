@@ -191,8 +191,8 @@ function getUsers(ID){
 
 function addUser(username, password_, email_){
 	// all info about the User
-	para = "?username="+ username,
-		"&password=" + password_,
+	para = "?username="+ username+
+		"&password=" + password_+
 		"&email="+ email_;
 	return fetch('/api/user/addUser'+para, {
 	  method: 'POST',
@@ -217,7 +217,7 @@ function addUser(username, password_, email_){
 function validateUser(username, password_, email_){
 	// all info about the User
 	para = 
-		"?username="+ username,
+		"?username="+ username+
 		"&password="+ password_;
 	return fetch('/api/user/validateUser', {
 	  method: 'POST',

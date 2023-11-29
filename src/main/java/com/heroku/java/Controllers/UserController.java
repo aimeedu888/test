@@ -47,11 +47,7 @@ public class UserController {
 		User u = new User(username, password, email);
 		userRepository.save(u);
 		System.out.println("UserController: added user: "+u.getUserID());
-		User just_added = userRepository.findByUsername(username);
-		if (just_added == null) {
-			return -444;
-		}
-		return just_added.getUserID();
+		return u.getUserID();
 	}
 	
 	@GetMapping("/validateUser")

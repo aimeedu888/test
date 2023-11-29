@@ -1,70 +1,61 @@
 //WE NEED API CALL THAT PULLS ALL CARDS FROM A SPECIFIC USER ID, THE API CALL NEEDS TO RETURN EACH POST ID ALSO FOR THE USER
 
 // PostController
-function getAllPosts ()
+async function getAllPosts ()
 {
-	return fetch('/api/post/getAllPost', {
-	  method: 'GET',
-	  headers: {
-	    'Content-Type': 'application/json',
-	  }
-	})
-	  .then(response => response.json())
-	  .then(data => {
-	    console.log('api.js getAllPosts: need implementation, ' +
-	    'data should be a json array with all posts: \n\n' + data.tostring());
-	    // Handle success response from the server
-	  })
-	  .catch((error) => {
-	    console.error('Error:', error);
-	    // Handle error
-	  });
+	try {
+        const response = await fetch('/api/post/getAllPost', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const data = await response.json();
+        console.log('api.js getAllPosts: need implementation, ' +
+            'data should be a json array with all posts: \n\n' + data.tostring());
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-function getPostsByUser(user_id){
-	return fetch('/api/post/getPostByUser?user_id='+user_id, {
-	  method: 'GET',
-	  headers: {
-	    'Content-Type': 'application/json',
-	    'Access-Control-Allow-Origin': '*',
-	  },
-	  body: JSON.stringify(sending)
-	})
-	.then(response => response.json())
-	  .then(data => {
-	    console.log('api.js getPostsByUser: need implementation, ' +
-	    'data should be a json array with all posts of the user: \n\n' + data.tostring());
-	    // Handle success response from the server
-	  })
-	  .catch((error) => {
-	    console.error('Error:', error);
-	    // Handle error
-	  });
+async function getPostsByUser(user_id){
+	try {
+        const response = await fetch('/api/post/getPostByUser?user_id=' + user_id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify(sending)
+        });
+        const data = await response.json();
+        console.log('api.js getPostsByUser: need implementation, ' +
+            'data should be a json array with all posts of the user: \n\n' + data.tostring());
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-function getPostsByID(post_id){
-	return fetch('/api/post/getPostByID?post_id='+post_id, {
-	  method: 'GET',
-	  headers: {
-	    'Content-Type': 'application/json',
-	    'Access-Control-Allow-Origin': '*',
-	  },
-	  body: JSON.stringify(sending)
-	})
-	.then(response => response.json())
-	  .then(data => {
-	    console.log('api.js getPostsByID: need implementation, ' +
-	    'data should be a json of the post: \n\n' + data.tostring());
-	    // Handle success response from the server
-	    return data;
-	  })
-	  .catch((error) => {
-	    console.error('Error:', error);
-	    // Handle error
-	  });
+async function getPostsByID(post_id){
+	try {
+        const response = await fetch('/api/post/getPostByID?post_id=' + post_id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify(sending)
+        });
+        const data = await response.json();
+        console.log('api.js getPostsByID: need implementation, ' +
+            'data should be a json of the post: \n\n' + data.tostring());
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-function addPost(postTitle, imageUrl_, itemPrice_, description_,sold_,user_id){
+async function addPost(postTitle, imageUrl_, itemPrice_, description_,sold_,user_id){
 
 	para = '?'+
 		"postTitle=" + postTitle +
@@ -73,23 +64,20 @@ function addPost(postTitle, imageUrl_, itemPrice_, description_,sold_,user_id){
 		"&description_=" +description_+
 		"&sold_="+ sold_+
 		"&user_id="+ user_id;
-	return fetch('/api/post/addPost'+para, {
-	  method: 'POST',
-	  headers: {
-	    'Content-Type': 'text/plain',
-	    'Access-Control-Allow-Origin': '*',
-	  },
-	  body: JSON.stringify(sending)
-	})
-	.then(response => response.text())
-	  .then(data => {
-	    console.log('api.js addPost: returns the id of the added post:' + data);
-	    // Handle success response from the server
-	  })
-	  .catch((error) => {
-	    console.error('Error:', error);
-	    // Handle error
-	  });
+	try {
+        const response = await fetch('/api/post/addPost' + para, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain',
+                'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify(sending)
+        });
+        const data = await response.text();
+        console.log('api.js addPost: returns the id of the added post:' + data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 async function deletePostByID(postId){
@@ -110,10 +98,6 @@ async function deletePostByID(postId){
 
 async function test(xxx, xxx2)
 {
-	const sending = {
-		"test1": xxx,
-		"test2": "okkkk"
-	}; // this does not matter
 	try {
         const response = await fetch('/api/post/PostTest?test1=' + xxx + '&test2=' + xxx2, {
             method: 'POST',
@@ -121,7 +105,6 @@ async function test(xxx, xxx2)
                 'Content-Type': 'text/plain',
                 'Access-Control-Allow-Origin': '*',
             },
-            body: JSON.stringify(sending)
         });
         const data = await response.text();
         console.log(data);

@@ -48,7 +48,7 @@ const autheticate = async (username, password) => {
    console.log("autheticate: temp is: "+temp);
   if (temp == "1"){
 	  console.log("autheticate: 1");
-	  return true;
+	  return false;
   }
   else{
 	  console.log("autheticate: 2");

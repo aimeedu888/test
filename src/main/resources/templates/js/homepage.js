@@ -77,13 +77,15 @@ const renderAllPosts = async () => {
 	console.log("Rendering all posts");
 	const posts = await getAllPosts();
 	if (posts) {
-		posts.forEach(post => {
+		posts.forEach(async post => {
 			const title = post.postTitle;
 			const imageURL = post.imageUrl;
 			const details = post.description;
 			const price = post.itemPrice;
 			const postID = post.postID;
-			const newCard = createCard(title, imageURL, details, price, postID);
+			const userID = post.user_id;
+			const user = await getUsers(userID);
+			const newCard = createCardU(title, imageURL, details, price, postID);
 			const cardContainerRow = document.getElementById("posts-container");
 			cardContainerRow.appendChild(newCard);
 		});

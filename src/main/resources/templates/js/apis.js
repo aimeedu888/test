@@ -162,8 +162,7 @@ async function getUsers(ID) {
 			},
 		});
 		const data = await response.json();
-		console.log('api.js getUsers: need implementation, ' +
-			'data should be a json of the post: \n\n' + data.tostring());
+		console.log(data);
 		return data;
 	} catch (error) {
 		console.error('Error:', error);

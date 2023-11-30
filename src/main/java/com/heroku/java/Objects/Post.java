@@ -5,8 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 @Entity
-@Table(name="PostTable")
+@Table(name = "PostTable")
 public class Post {
 	private String postTitle;
 	private String imageUrl_;
@@ -15,11 +16,13 @@ public class Post {
 	private Boolean sold_;
 	private int user_id;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int postID_;
 
-	public Post(String postTitle, String imageUrl, double itemPrice, String description, Boolean sold,
-			int user_id) {
+	public Post() {
+	}
+
+	public Post(String postTitle, String imageUrl, double itemPrice, String description, Boolean sold, int user_id) {
 		this.postTitle = postTitle;
 		this.imageUrl_ = imageUrl;
 		this.itemPrice_ = itemPrice;
@@ -32,7 +35,7 @@ public class Post {
 	public int getUser_id() {
 		return user_id;
 	}
-	
+
 	public String getPostTitle() {
 		return postTitle;
 	}
@@ -48,7 +51,6 @@ public class Post {
 	public String getDescription() {
 		return description_;
 	}
-
 
 	public Boolean isSold() {
 		return sold_;
@@ -74,7 +76,6 @@ public class Post {
 	public void setDescription(String description) {
 		this.description_ = description;
 	}
-
 
 	public void setSold(Boolean sold) {
 		this.sold_ = sold;

@@ -89,11 +89,12 @@ const hideForm = () => {
 	overlay.classList.remove('overlay-visible');
 }
 
-const handleFormEdits = (e) => {
+const handleFormEdits = async (e) => {
 	e.preventDefault();
 	const title = document.getElementById("title").value;
 	const details = document.getElementById("details").value;
 	const price = document.getElementById("price").value;
+
 
 	if (title.trim() == "" || details.trim() == "" || price.trim() == "") {
 		const errorMsg = document.getElementById("edit-error-msg");
@@ -102,6 +103,7 @@ const handleFormEdits = (e) => {
 	else {
 		//CALL post update API HERE
 		const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
+		await updatePost(title, cardElements.getElementsByTagName('img')[0].src, itemPrice_, details, true, localStorage.getItem("currentUser"), localStorage.getItem("currentCardID"))
 		cardElements.getElementsByClassName("card-title")[0].innerHTML = title;
 		cardElements.getElementsByClassName("card-text")[0].innerHTML = details;
 		cardElements.getElementsByClassName("price-tag")[0].innerHTML = "$" + price;

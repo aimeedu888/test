@@ -59,16 +59,14 @@ function checkLoggedIn() {
 	const signedIn = localStorage.getItem('currentUser');
 	console.log(typeof signedIn);
 	if (signedIn != "-1") {
-		console.log("logged in ");
-		document.getElementById("closet-link").style.visibility = "block";
-		document.getElementById("logout-link").style.visibility = "block";
-		document.getElementById("sign-up-link").style.visibility = "none";
+		document.getElementById("closet-link").style.display = "block";
+		document.getElementById("logout-link").style.display = "block";
+		document.getElementById("sign-up-link").style.display = "none";
 	}
 	else {
-		console.log("guest");
-		document.getElementById("closet-link").style.visibility = "none";
-		document.getElementById("logout-link").style.visibility = "none";
-		document.getElementById("sign-up-link").style.visibility = "block";
+		document.getElementById("closet-link").style.display = "none";
+		document.getElementById("logout-link").style.display = "none";
+		document.getElementById("sign-up-link").style.display = "block";
 	}
 }
 

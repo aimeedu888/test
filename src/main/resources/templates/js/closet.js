@@ -123,7 +123,7 @@ const handleAddPostClick = async (e) => {
 	}
 	else {
 		//post card api
-		const newPostID = await addPost(titleInput, imgURL, priceInput, detailsInput, true, localStorage.getItem("currentUser"));
+		const newPostID = await addPost(titleInput, imgURL, priceInput, detailsInput, true, parseInt(localStorage.getItem("currentUser")));
 		console.log("Created postID: " + newPostID);
 		const newCard = createCard(titleInput, imgURL, detailsInput, priceInput, newPostID);
 		const cardContainerRow = document.getElementById("posts-container");

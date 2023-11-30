@@ -43,10 +43,11 @@ document.querySelector('#register-form').onsubmit = (e) => {
 	}
 	if (isValid) {
 		addNewUser(email.value, username.value, password.value).then(ID => {
-			if (ID == "-3") {
+			console.log(ID);
+			if (ID == -3) {
 				regError.innerHTML = "Username in use already";
 			}
-			else if (ID == "-2") {
+			else if (ID == -2) {
 				regError.innerHTML = "Email in use already";
 			}
 			else {

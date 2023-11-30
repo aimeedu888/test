@@ -27,9 +27,10 @@ document.querySelector('#login-form').onsubmit = async (e) => {
 	}
 	if (isFilled) {
 		const temp = await autheticate(username.value, password.value)
-		if (temp) {
+		if (temp != -1 && temp != -2) {
 			console.log("<<<<<<<true");
-			//ADD LOGIC TO GO TO MAIN HOME PAGE
+			localStorage.setItem("currentUser", temp);
+			window.location.href = "./homepage.html";
 			return true;
 		}
 		else {
@@ -48,16 +49,8 @@ async function autheticate(username, password) {
 	console.log("Autheticating username and password combination");
 	//CALL API FUNCTION HERE
 	const temp = await validateUser(username, password);
-	// 1 means found, 0 means username not found, -1 means password incorrect
-	console.log("autheticate: temp is: " + temp);
-	if (temp == "1") {
-		console.log("autheticate: 1");
-		return false;
-	}
-	else {
-		console.log("autheticate: 2");
-		return false;
-	}
+	// non negative means found, -2 means username not found, -1 means password incorrect
+	return temp;
 }
 
 function setLocalStorage() {

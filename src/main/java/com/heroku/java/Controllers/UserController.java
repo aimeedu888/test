@@ -51,19 +51,19 @@ public class UserController {
 	}
 	
 	@GetMapping("/validateUser")
-	public @ResponseBody String validateUser(@RequestParam String username, @RequestParam String password) {
+	public @ResponseBody int validateUser(@RequestParam String username, @RequestParam String password) {
 		User user = userRepository.findByUsername(username);
 			if (user != null) {
 		        if (user.getPassword().equals(password)) {
 		        	System.out.println("find user: " + username);
-		            return "1";
+		            return user.getUserID();
 		        } else {
 		            System.out.println("Incorrect password for user: " + username);
-		            return "-1";
+		            return -1;
 		        }
 		    } else {
 		        System.out.println("User not found: " + username);
-		        return "0";
+		        return -2;
 		    }
 	}
     @DeleteMapping("/deleteUser")

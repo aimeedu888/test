@@ -26,7 +26,6 @@ async function getPostsByUser(user_id) {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 			},
-			body: JSON.stringify(sending)
 		});
 		const data = await response.json();
 		console.log('api.js getPostsByUser: need implementation, ' +
@@ -45,7 +44,6 @@ async function getPostsByID(post_id) {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 			},
-			body: JSON.stringify(sending)
 		});
 		const data = await response.json();
 		console.log('api.js getPostsByID: need implementation, ' +
@@ -142,7 +140,6 @@ async function getUsers(ID) {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',
 			},
-			body: JSON.stringify(sending)
 		});
 		const data = await response.json();
 		console.log('api.js getUsers: need implementation, ' +

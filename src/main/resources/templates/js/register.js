@@ -20,6 +20,8 @@ document.querySelector('#register-form').onsubmit = (e) => {
 	const passError = document.getElementById("passError");
 	const passRError = document.getElementById("passRError");
 
+	const regError = document.getElementById("regError");
+
 	var isValid = true;
 	if (email.value.trim() == "" || !emailPattern.test(email.value)) {
 		emailError.style.visibility = "visible";
@@ -41,9 +43,17 @@ document.querySelector('#register-form').onsubmit = (e) => {
 	}
 	if (isValid) {
 		addNewUser(email.value, username.value, password.value).then(ID => {
-			localStorage.setItem("currentUser", ID);
-			console.log(localStorage.getItem("currentUser") + " added");
-			return false;
+			if (ID == "-3") {
+				regError.innerHTML = "Username in use already";
+			}
+			else if (ID == "-2") {
+				regError.innerHTML = "Email in use already";
+			}
+			else {
+				localStorage.setItem("currentUser", ID);
+				console.log(localStorage.getItem("currentUser") + " added");
+				return false;
+			}
 		})
 	}
 	else {
@@ -52,9 +62,9 @@ document.querySelector('#register-form').onsubmit = (e) => {
 
 }
 
-const addNewUser = (email, username, password) => {
+const addNewUser = async (email, username, password) => {
 	console.log("Uploading new user: " + email + " " + username + " " + password);
 	//CALL API FUNCTION HERE
-	const ID = addUser(username, password, email);
+	const ID = await addUser(username, password, email);
 	return ID;
 }

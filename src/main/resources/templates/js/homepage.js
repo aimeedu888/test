@@ -73,16 +73,22 @@ function checkLoggedIn() {
 function clearLocalStorage() {
 	localStorage.clear();
 }
-
-const renderInitialPosts = () => {
-	//CALL GETALLPOSTS HERE AND USE LOOP TO KEEP MAKING NEWCARDS FOR ALL POSTS
-	const newCard = createCardU("username", "TITLE", "IMAGE", "DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS DETAILS", 12.99, 1);
-	const cardContainerRow = document.getElementById("posts-container");
-	cardContainerRow.appendChild(newCard);
+const renderUserPosts = async () => {
+	console.log("Rendering all posts");
+	const posts = await getPostsByUser(parseInt(localStorage.getItem("currentUser")));
+	if (posts) {
+		posts.forEach(post => {
+			const title = post.postTitle;
+			const imageURL = post.imageUrl;
+			const details = post.description;
+			const price = post.itemPrice;
+			const postID = post.postID;
+			const newCard = createCard(title, imageURL, details, price, postID);
+			const cardContainerRow = document.getElementById("posts-container");
+			cardContainerRow.appendChild(newCard);
+		});
+	} else {
+		console.error("No posts found or error fetching posts.");
+	}
 }
-
-renderInitialPosts();
-renderInitialPosts();
-renderInitialPosts();
-renderInitialPosts();
-renderInitialPosts();
+renderUserPosts();

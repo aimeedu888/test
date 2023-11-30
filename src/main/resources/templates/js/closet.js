@@ -167,3 +167,4 @@ const testCreation = () => {
 const renderUserPosts = async () => {
 	console.log(await getPostsByUser(parseInt(localStorage.getItem("currentUser"))));
 }
+renderUserPosts();

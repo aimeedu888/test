@@ -78,7 +78,31 @@ async function addPost(postTitle, imageUrl_, itemPrice_, description_, sold_, us
 		console.error('Error:', error);
 	}
 }
+async function updatePost(postTitle, imageUrl_, itemPrice_, description_, sold_, user_id, post_id) {
 
+	para = '?' +
+		"postTitle=" + postTitle +
+		"&imageUrl_=" + imageUrl_ +
+		"&itemPrice_=" + itemPrice_ +
+		"&description_=" + description_ +
+		"&sold_=" + sold_ +
+		"&user_id=" + user_id +
+		"&post_id=" + post_id;
+	try {
+		const response = await fetch('/api/post/updatePost' + para, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'text/plain',
+				'Access-Control-Allow-Origin': '*',
+			},
+		});
+		const data = await response.text();
+		console.log('api.js addPost: returns the id of the added post:' + data);
+		return data;
+	} catch (error) {
+		console.error('Error:', error);
+	}
+}
 async function deletePostByID(postId) {
 	try {
 		const response = await fetch('/api/post/deletePost?postID=' + postId, {

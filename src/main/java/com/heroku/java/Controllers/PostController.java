@@ -23,46 +23,49 @@ import com.heroku.java.Repositories.*;
 @RequestMapping("/api/post")
 @CrossOrigin
 public class PostController {
-	
+
 	private PostRepository postRepository;
+
 	@Autowired
 	public PostController(PostRepository postRepository) {
 		this.postRepository = postRepository;
 	}
-	
+
 	@PostMapping("/PostTest")
 	public @ResponseBody String test(int test1, String test2) {
 		String temp = "test receive, the data is: ";
 		temp += String.valueOf(test1);
-		temp += " "+ test2;
+		temp += " " + test2;
 		System.out.print(temp);
 		return temp;
 	}
-	
+
 	@GetMapping("/getAllPost")
 	public @ResponseBody Iterable<Post> getAllPosts() {
 		return postRepository.findAll();
 	}
-	
+
 	@GetMapping("/getPostByUser")
-	public @ResponseBody List<Post> getPostsByUser(int user_id) {
+	public @ResponseBody List<Post> getPostsByUser(String user_id) {
+		int userID = Integer.parseInt(user_id);
 		Iterable<Post> allpost = postRepository.findAll();
 		List<Post> posts = new ArrayList<Post>();
 		for (Post p : allpost) {
-			if (p.getUser_id()== user_id) {
+			if (p.getUser_id() == userID) {
 				posts.add(p);
 			}
 		}
 		return posts;
 	}
-	
+
 	@GetMapping("/getPostByID")
 	public @ResponseBody Optional<Post> getPostsByID(int post_id) {
 		return postRepository.findById(post_id);
 	}
 
 	@PostMapping("/addPost")
-	public @ResponseBody Integer addPost(String postTitle, String imageUrl_, String itemPrice_, String description_, String seller_, String sold_, String user_id) {
+	public @ResponseBody Integer addPost(String postTitle, String imageUrl_, String itemPrice_, String description_,
+			String seller_, String sold_, String user_id) {
 		// create the Post object
 		Double itemPrice = Double.parseDouble(itemPrice_);
 		boolean sold = true;
@@ -70,19 +73,35 @@ public class PostController {
 			sold = false;
 		}
 		int u_id = Integer.parseInt(user_id);
-		Post p = new Post(postTitle, imageUrl_, itemPrice, description_,sold, u_id);
-		
+		Post p = new Post(postTitle, imageUrl_, itemPrice, description_, sold, u_id);
+
 		postRepository.save(p);
 		return p.getPostID();
 	}
-	
-    @DeleteMapping("/deletePost")
-    public @ResponseBody String deletePost(Integer postID) {
-        if (postRepository.existsById(postID)) {
-            postRepository.deleteById(postID);
-            return "Post with ID " + postID + " deleted successfully";
-        } else {
-            return "Post with ID " + postID + " not found, cannot delete";
-        }
-    }
+
+	@PostMapping("/updatePost")
+	public @ResponseBody Integer updatePost(String postTitle, String imageUrl_, String itemPrice_, String description_,
+			String seller_, String sold_, String user_id, String post_id) {
+		// create the Post object
+		Double itemPrice = Double.parseDouble(itemPrice_);
+		boolean sold = true;
+		if (sold_.equals("0")) {
+			sold = false;
+		}
+		int u_id = Integer.parseInt(user_id);
+		Post p = new Post(postTitle, imageUrl_, itemPrice, description_, sold, u_id);
+		p.setPostID(Integer.parseInt(post_id));
+		postRepository.save(p);
+		return p.getPostID();
+	}
+
+	@DeleteMapping("/deletePost")
+	public @ResponseBody String deletePost(Integer postID) {
+		if (postRepository.existsById(postID)) {
+			postRepository.deleteById(postID);
+			return "Post with ID " + postID + " deleted successfully";
+		} else {
+			return "Post with ID " + postID + " not found, cannot delete";
+		}
+	}
 }

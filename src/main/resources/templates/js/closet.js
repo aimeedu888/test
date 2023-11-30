@@ -1,165 +1,169 @@
 const createCard = (title, imgFilePath, details, price, id) => {
-  const card = document.createElement("div");
-  card.dataset.id = id;
-  card.classList.add("card", "p-1");
-  card.style.width = "20rem";
-  card.style.height = "22rem";
+	const card = document.createElement("div");
+	card.dataset.id = id;
+	card.classList.add("card", "p-1");
+	card.style.width = "20rem";
+	card.style.height = "22rem";
 
-  //create img container and img
-  const imgContainer = document.createElement("div");
-  imgContainer.classList.add("img-container");
+	//create img container and img
+	const imgContainer = document.createElement("div");
+	imgContainer.classList.add("img-container");
 
-  const img = document.createElement("img");
-  img.src = imgFilePath;
-  img.alt = "Image of User clothing";
+	const img = document.createElement("img");
+	img.src = imgFilePath;
+	img.alt = "Image of User clothing";
 
-  imgContainer.appendChild(img);
+	imgContainer.appendChild(img);
 
-  //create card body
-  const cardBody = document.createElement("div");
-  imgContainer.classList.add("card-body");
+	//create card body
+	const cardBody = document.createElement("div");
+	imgContainer.classList.add("card-body");
 
-  const cardTitle = document.createElement("h5");
-  cardTitle.classList.add("card-title");
-  cardTitle.innerHTML = title;
+	const cardTitle = document.createElement("h5");
+	cardTitle.classList.add("card-title");
+	cardTitle.innerHTML = title;
 
-  const cardDetails = document.createElement("p");
-  cardDetails.classList.add("card-text");
-  cardDetails.innerHTML = details;
+	const cardDetails = document.createElement("p");
+	cardDetails.classList.add("card-text");
+	cardDetails.innerHTML = details;
 
-  const cardEditContainer = document.createElement("div");
-  cardEditContainer.classList.add("card-edit-container", "d-flex", "flex-row", "align-items-center", "justify-content-between");
+	const cardEditContainer = document.createElement("div");
+	cardEditContainer.classList.add("card-edit-container", "d-flex", "flex-row", "align-items-center", "justify-content-between");
 
-  //create button and add event listener
-  const editButton = document.createElement("button");
-  editButton.classList.add("btn", "btn-primary");
-  editButton.innerHTML = "Edit";
+	//create button and add event listener
+	const editButton = document.createElement("button");
+	editButton.classList.add("btn", "btn-primary");
+	editButton.innerHTML = "Edit";
 
-  editButton.addEventListener("click", (e) => handleEditButtonClick(e));
+	editButton.addEventListener("click", (e) => handleEditButtonClick(e));
 
-  const priceTag = document.createElement("p");
-  priceTag.classList.add("price-tag");
-  priceTag.innerHTML = "$" + price;
+	const priceTag = document.createElement("p");
+	priceTag.classList.add("price-tag");
+	priceTag.innerHTML = "$" + price;
 
-  cardEditContainer.appendChild(editButton);
-  cardEditContainer.appendChild(priceTag);
+	cardEditContainer.appendChild(editButton);
+	cardEditContainer.appendChild(priceTag);
 
-  cardBody.appendChild(cardTitle);
-  cardBody.appendChild(cardDetails);
-  cardBody.appendChild(cardEditContainer);
+	cardBody.appendChild(cardTitle);
+	cardBody.appendChild(cardDetails);
+	cardBody.appendChild(cardEditContainer);
 
-  card.appendChild(imgContainer);
-  card.appendChild(cardBody);
+	card.appendChild(imgContainer);
+	card.appendChild(cardBody);
 
-  //create column for card to be in
-  const column = document.createElement("div");
-  column.classList.add("col-3", "d-flex", "align-items-center", "justify-content-center", "mb-4");
-  column.appendChild(card);
-  return column;
+	//create column for card to be in
+	const column = document.createElement("div");
+	column.classList.add("col-3", "d-flex", "align-items-center", "justify-content-center", "mb-4");
+	column.appendChild(card);
+	return column;
 }
 
 //EDIT FORM LOGIC START
 const handleEditButtonClick = (e) => {
-  const overlay = document.getElementById("overlay");
+	const overlay = document.getElementById("overlay");
 
-  const cardElements = e.target.parentNode.parentNode;
-  const title = cardElements.getElementsByClassName("card-title")[0].innerHTML;
-  const details = cardElements.getElementsByClassName("card-text")[0].innerHTML;
-  const price = cardElements.getElementsByClassName("price-tag")[0].innerHTML;
+	const cardElements = e.target.parentNode.parentNode;
+	const title = cardElements.getElementsByClassName("card-title")[0].innerHTML;
+	const details = cardElements.getElementsByClassName("card-text")[0].innerHTML;
+	const price = cardElements.getElementsByClassName("price-tag")[0].innerHTML;
 
-  const titleInput = document.getElementById("title");
-  const detailsInput = document.getElementById("details");
-  const priceInput = document.getElementById("price");
+	const titleInput = document.getElementById("title");
+	const detailsInput = document.getElementById("details");
+	const priceInput = document.getElementById("price");
 
-  titleInput.value = title;
-  detailsInput.value = details;
-  priceInput.value = parseFloat(price.replace('$', ''));
-  localStorage.setItem("currentCardID", e.target.parentNode.parentNode.parentNode.dataset.id);
-  showForm();
+	titleInput.value = title;
+	detailsInput.value = details;
+	priceInput.value = parseFloat(price.replace('$', ''));
+	localStorage.setItem("currentCardID", e.target.parentNode.parentNode.parentNode.dataset.id);
+	showForm();
 }
 const showForm = () => {
-  const overlay = document.getElementById("overlay");
-  overlay.classList.add('overlay-visible');
-  overlay.classList.remove('overlay-hidden');
+	const overlay = document.getElementById("overlay");
+	overlay.classList.add('overlay-visible');
+	overlay.classList.remove('overlay-hidden');
 }
 
 const hideForm = () => {
-  const overlay = document.getElementById("overlay");
-  overlay.classList.add('overlay-hidden');
-  overlay.classList.remove('overlay-visible');
+	const overlay = document.getElementById("overlay");
+	overlay.classList.add('overlay-hidden');
+	overlay.classList.remove('overlay-visible');
 }
 
 const handleFormEdits = (e) => {
-  e.preventDefault();
-  const title = document.getElementById("title").value;
-  const details = document.getElementById("details").value;
-  const price = document.getElementById("price").value;
+	e.preventDefault();
+	const title = document.getElementById("title").value;
+	const details = document.getElementById("details").value;
+	const price = document.getElementById("price").value;
 
-  if (title.trim() == "" || details.trim() == "" || price.trim() == "") {
-    const errorMsg = document.getElementById("edit-error-msg");
-    errorMsg.style.visibility = "visible";
-  }
-  else {
-    //CALL getALLUserPosts API HERE
-    const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
-    cardElements.getElementsByClassName("card-title")[0].innerHTML = title;
-    cardElements.getElementsByClassName("card-text")[0].innerHTML = details;
-    cardElements.getElementsByClassName("price-tag")[0].innerHTML = "$" + price;
-    hideForm();
-  }
+	if (title.trim() == "" || details.trim() == "" || price.trim() == "") {
+		const errorMsg = document.getElementById("edit-error-msg");
+		errorMsg.style.visibility = "visible";
+	}
+	else {
+		//CALL post update API HERE
+		const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
+		cardElements.getElementsByClassName("card-title")[0].innerHTML = title;
+		cardElements.getElementsByClassName("card-text")[0].innerHTML = details;
+		cardElements.getElementsByClassName("price-tag")[0].innerHTML = "$" + price;
+		hideForm();
+	}
 }
 //EDIT FORM LOGIC END 
 
 //CREATE POST FORM LOGIC START
-const handleAddPostClick = (e) => {
-  e.preventDefault();
-  const titleInput = document.getElementById("titleC").value;
-  const detailsInput = document.getElementById("detailsC").value;
-  const priceInput = document.getElementById("priceC").value;
-  const imgURL = document.getElementById("imgURLC").value;
-  if (titleInput.trim() == "" || detailsInput.trim() == "" || priceInput.trim() == "" || imgURL.trim() == "") {
-    const errorMsg = document.getElementById("create-error-msg");
-    errorMsg.style.visibility = "visible";
-  }
-  else {
-    const newCard = createCard(titleInput, imgURL, detailsInput, priceInput, 1);
-    const cardContainerRow = document.getElementById("posts-container");
-    cardContainerRow.appendChild(newCard);
+const handleAddPostClick = async (e) => {
+	e.preventDefault();
+	const titleInput = document.getElementById("titleC").value;
+	const detailsInput = document.getElementById("detailsC").value;
+	const priceInput = document.getElementById("priceC").value;
+	const imgURL = document.getElementById("imgURLC").value;
+	if (titleInput.trim() == "" || detailsInput.trim() == "" || priceInput.trim() == "" || imgURL.trim() == "") {
+		const errorMsg = document.getElementById("create-error-msg");
+		errorMsg.style.visibility = "visible";
+	}
+	else {
+		//post card api
+		const newPostID = await addPost(titleInput, imgURL, priceInput, detailsInput, true, localStorage.getItem("currentUser"));
+		console.log("Created postID: " + newPostID);
+		const newCard = createCard(titleInput, imgURL, detailsInput, priceInput, newPostID);
+		const cardContainerRow = document.getElementById("posts-container");
+		cardContainerRow.appendChild(newCard);
 
-    //clear form
+		//clear form
 
-    document.getElementById("titleC").value = "";
-    document.getElementById("detailsC").value = "";
-    document.getElementById("priceC").value = "";
-    document.getElementById("imgURLC").value = "";
-    hideFormC();
-  }
+		document.getElementById("titleC").value = "";
+		document.getElementById("detailsC").value = "";
+		document.getElementById("priceC").value = "";
+		document.getElementById("imgURLC").value = "";
+		hideFormC();
+	}
 }
 const showFormC = () => {
-  const overlay = document.getElementById("overlay2");
-  overlay.classList.add('overlay-visible');
-  overlay.classList.remove('overlay-hidden');
+	const overlay = document.getElementById("overlay2");
+	overlay.classList.add('overlay-visible');
+	overlay.classList.remove('overlay-hidden');
 }
 
 const hideFormC = () => {
-  const overlay = document.getElementById("overlay2");
-  overlay.classList.add('overlay-hidden');
-  overlay.classList.remove('overlay-visible');
+	const overlay = document.getElementById("overlay2");
+	overlay.classList.add('overlay-hidden');
+	overlay.classList.remove('overlay-visible');
 }
 //CREATE POST FORM LOGIC END
 
 const deletePost = () => {
-  const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
-  //CALL DELETE API HERE 
-  cardElements.remove();
-  hideForm();
+	const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
+	//CALL DELETE API HERE 
+	cardElements.remove();
+	hideForm();
 }
 //renders a bunch of cards with these paramaters for seeing if it looks ok
 const testCreation = () => {
-  const newCard = createCard("testing1", "https://media.macphun.com/img/uploads/customer/how-to/608/15542038745ca344e267fb80.28757312.jpg?q=85&w=1340", "some details some details some details some details some details some details some details some details", 10.99, 1);
-  const cardContainerRow = document.getElementById("posts-container");
-  cardContainerRow.appendChild(newCard);
+	const newCard = createCard("testing1", "https://media.macphun.com/img/uploads/customer/how-to/608/15542038745ca344e267fb80.28757312.jpg?q=85&w=1340", "some details some details some details some details some details some details some details some details", 10.99, 1);
+	const cardContainerRow = document.getElementById("posts-container");
+	cardContainerRow.appendChild(newCard);
 }
 
-//add delete button implementation
-//add order button implementation
+const renderUserPosts = () => {
+	console.log(getPostsByUser(localStorage.getItem("currentUser")));
+}

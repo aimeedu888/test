@@ -30,7 +30,7 @@ document.querySelector('#login-form').onsubmit = async (e) => {
 		if (temp != -1 && temp != -2) {
 			console.log("<<<<<<<true");
 			localStorage.setItem("currentUser", temp);
-			window.location.href = "./homepage.html";
+			window.location.href = "../homepage.html";
 			return true;
 		}
 		else {

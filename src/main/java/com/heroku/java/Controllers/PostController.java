@@ -63,14 +63,6 @@ public class PostController {
 
 	@PostMapping("/addPost")
 	public @ResponseBody Integer addPost(String postTitle, String imageUrl_, String itemPrice_, String description_, String seller_, String sold_, String user_id) {
-		
-		for (Post t : postRepository.findAll()) {
-			if (t.getPostTitle().equals(postTitle)) {
-				System.out.println("Duplicate postTitle, cannot add Post");
-				return -1;
-			}
-		}
-		
 		// create the Post object
 		Double itemPrice = Double.parseDouble(itemPrice_);
 		boolean sold = true;

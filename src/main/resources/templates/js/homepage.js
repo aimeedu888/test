@@ -57,6 +57,7 @@ const createCardU = (user, title, imgFilePath, details, price, id) => {
 }
 function checkLoggedIn() {
   const signedIn = localStorage.getItem('currentUser');
+  console.log(signedIn);
   if (signedIn >= 0) {
     document.getElementById("closet-link").style.visibility = "block";
     document.getElementById("logout-link").style.visibility = "block";
@@ -72,10 +73,6 @@ function checkLoggedIn() {
 function clearLocalStorage() {
   localStorage.clear();
 }
-function test1() {
-  console.log(localStorage.getItem("currentUser"));
-}
-test1();
 
 const renderInitialPosts = () => {
   //CALL GETALLPOSTS HERE AND USE LOOP TO KEEP MAKING NEWCARDS FOR ALL POSTS

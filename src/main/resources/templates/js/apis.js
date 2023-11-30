@@ -10,8 +10,7 @@ async function getAllPosts() {
 			}
 		});
 		const data = await response.json();
-		console.log('api.js getAllPosts: need implementation, ' +
-			'data should be a json array with all posts: \n\n' + data.tostring());
+		console.log(data);
 		return data;
 	} catch (error) {
 		console.error('Error:', error);

@@ -71,7 +71,6 @@ async function addPost(postTitle, imageUrl_, itemPrice_, description_,sold_,user
                 'Content-Type': 'text/plain',
                 'Access-Control-Allow-Origin': '*',
             },
-            body: JSON.stringify(sending)
         });
         const data = await response.text();
         console.log('api.js addPost: returns the id of the added post:' + data);

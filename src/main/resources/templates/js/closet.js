@@ -165,5 +165,5 @@ const testCreation = () => {
 }
 
 const renderUserPosts = () => {
-	console.log(getPostsByUser(localStorage.getItem("currentUser")));
+	console.log(getPostsByUser(parseInt(localStorage.getItem("currentUser"))));
 }

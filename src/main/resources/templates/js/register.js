@@ -57,7 +57,8 @@ document.querySelector('#register-form').onsubmit = (e) => {
 				console.log(localStorage.getItem("currentUser") + " added");
 				regError.innerHTML = "";
 				regError.style.visibility = "hidden";
-				return false;
+				window.location.href = "./homepage.html";
+				return true;
 			}
 		})
 	}

@@ -166,6 +166,20 @@ const testCreation = () => {
 
 const renderUserPosts = async () => {
 	console.log("Rendering user posts");
-	console.log(await getPostsByUser(parseInt(localStorage.getItem("currentUser"))));
+	const posts = await getPostsByUser(parseInt(localStorage.getItem("currentUser")));
+	if (posts) {
+		posts.forEach(post => {
+			const title = post.postTitle;
+			const imageURL = post.imageUrl;
+			const details = post.description;
+			const price = post.itemPrice;
+			const postID = post.postID;
+			const newCard = createCard(title, imageURL, details, price, postID);
+			const cardContainerRow = document.getElementById("posts-container");
+			cardContainerRow.appendChild(newCard);
+		});
+	} else {
+		console.error("No posts found or error fetching posts.");
+	}
 }
 renderUserPosts();

@@ -28,9 +28,6 @@ async function getPostsByUser(user_id) {
 			},
 		});
 		const data = await response.json();
-		console.log(data);
-		console.log('api.js getPostsByUser: need implementation, ' +
-			'data should be a json array with all posts of the user: \n\n' + data.tostring());
 		return data;
 	} catch (error) {
 		console.error('Error:', error);

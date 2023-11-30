@@ -85,7 +85,7 @@ const renderAllPosts = async () => {
 			const postID = post.postID;
 			const userID = post.user_id;
 			const user = await getUsers(userID);
-			const newCard = createCardU(title, imageURL, details, price, postID);
+			const newCard = createCardU(user.email, title, imageURL, details, price, postID);
 			const cardContainerRow = document.getElementById("posts-container");
 			cardContainerRow.appendChild(newCard);
 		});

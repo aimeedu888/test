@@ -73,9 +73,9 @@ function checkLoggedIn() {
 function clearLocalStorage() {
 	localStorage.clear();
 }
-const renderUserPosts = async () => {
+const renderAllPosts = async () => {
 	console.log("Rendering all posts");
-	const posts = await getPostsByUser(parseInt(localStorage.getItem("currentUser")));
+	const posts = await getAllPosts();
 	if (posts) {
 		posts.forEach(post => {
 			const title = post.postTitle;
@@ -91,4 +91,4 @@ const renderUserPosts = async () => {
 		console.error("No posts found or error fetching posts.");
 	}
 }
-renderUserPosts();
+renderAllPosts();

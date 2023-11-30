@@ -166,9 +166,9 @@ const testCreation = () => {
 	cardContainerRow.appendChild(newCard);
 }
 
-const renderAllPosts = async () => {
+const renderUserPosts = async () => {
 	console.log("Rendering user posts");
-	const posts = await getAllPosts();
+	const posts = await getPostsByUser(parseInt(localStorage.getItem("currentUser")));
 	if (posts) {
 		posts.forEach(post => {
 			const title = post.postTitle;
@@ -184,4 +184,4 @@ const renderAllPosts = async () => {
 		console.error("No posts found or error fetching posts.");
 	}
 }
-renderAllPosts();
+renderUserPosts();

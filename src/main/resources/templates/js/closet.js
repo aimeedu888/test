@@ -155,7 +155,7 @@ const hideFormC = () => {
 
 const deletePost = () => {
 	const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
-	//CALL DELETE API HERE 
+	deletePostByID(localStorage.getItem("currentCardID"));
 	cardElements.remove();
 	hideForm();
 }

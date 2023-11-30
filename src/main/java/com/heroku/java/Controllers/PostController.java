@@ -96,12 +96,13 @@ public class PostController {
 	}
 
 	@DeleteMapping("/deletePost")
-	public @ResponseBody String deletePost(Integer postID) {
-		if (postRepository.existsById(postID)) {
-			postRepository.deleteById(postID);
-			return "Post with ID " + postID + " deleted successfully";
+	public @ResponseBody String deletePost(String postID) {
+		int postID_ = Integer.parseInt(postID);
+		if (postRepository.existsById(postID_)) {
+			postRepository.deleteById(postID_);
+			return "Post with ID " + postID_ + " deleted successfully";
 		} else {
-			return "Post with ID " + postID + " not found, cannot delete";
+			return "Post with ID " + postID_ + " not found, cannot delete";
 		}
 	}
 }

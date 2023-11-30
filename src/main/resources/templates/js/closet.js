@@ -156,7 +156,7 @@ const hideFormC = () => {
 const deletePost = () => {
 	const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
 	deletePostByID(localStorage.getItem("currentCardID"));
-	cardElements.remove();
+	cardElements.parentElement.remove();
 	hideForm();
 }
 //renders a bunch of cards with these paramaters for seeing if it looks ok

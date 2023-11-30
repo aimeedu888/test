@@ -58,7 +58,7 @@ const createCardU = (user, title, imgFilePath, details, price, id) => {
 function checkLoggedIn() {
   const signedIn = localStorage.getItem('currentUser');
   console.log(typeof signedIn);
-  if (signedIn >= 0) {
+  if (signedIn != "-1") {
     document.getElementById("closet-link").style.visibility = "block";
     document.getElementById("logout-link").style.visibility = "block";
     document.getElementById("sign-up-link").style.visibility = "none";

@@ -46,13 +46,17 @@ document.querySelector('#register-form').onsubmit = (e) => {
 			console.log(ID);
 			if (ID == -3) {
 				regError.innerHTML = "Username in use already";
+				regError.style.visibility = "visible";
 			}
 			else if (ID == -2) {
 				regError.innerHTML = "Email in use already";
+				regError.style.visibility = "visible";
 			}
 			else {
 				localStorage.setItem("currentUser", ID);
 				console.log(localStorage.getItem("currentUser") + " added");
+				regError.innerHTML = "";
+				regError.style.visibility = "hidden";
 				return false;
 			}
 		})

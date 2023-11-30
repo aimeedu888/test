@@ -103,7 +103,7 @@ const handleFormEdits = async (e) => {
 	else {
 		//CALL post update API HERE
 		const cardElements = document.querySelector(`[data-id="${localStorage.getItem("currentCardID")}"]`);
-		await updatePost(title, cardElements.getElementsByTagName('img')[0].src, itemPrice_, details, true, localStorage.getItem("currentUser"), localStorage.getItem("currentCardID"))
+		await updatePost(title, cardElements.getElementsByTagName('img')[0].src, price, details, true, localStorage.getItem("currentUser"), localStorage.getItem("currentCardID"))
 		cardElements.getElementsByClassName("card-title")[0].innerHTML = title;
 		cardElements.getElementsByClassName("card-text")[0].innerHTML = details;
 		cardElements.getElementsByClassName("price-tag")[0].innerHTML = "$" + price;

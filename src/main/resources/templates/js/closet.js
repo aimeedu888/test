@@ -164,6 +164,6 @@ const testCreation = () => {
 	cardContainerRow.appendChild(newCard);
 }
 
-const renderUserPosts = () => {
-	console.log(getPostsByUser(parseInt(localStorage.getItem("currentUser"))));
+const renderUserPosts = async () => {
+	console.log(await getPostsByUser(parseInt(localStorage.getItem("currentUser"))));
 }

@@ -119,8 +119,8 @@ const handleAddPostClick = async (e) => {
 	const detailsInput = document.getElementById("detailsC").value;
 	const priceInput = document.getElementById("priceC").value;
 	const imgURL = document.getElementById("imgURLC").value;
+	const errorMsg = document.getElementById("create-error-msg");
 	if (titleInput.trim() == "" || detailsInput.trim() == "" || priceInput.trim() == "" || imgURL.trim() == "") {
-		const errorMsg = document.getElementById("create-error-msg");
 		errorMsg.style.visibility = "visible";
 	}
 	else {
@@ -137,6 +137,7 @@ const handleAddPostClick = async (e) => {
 		document.getElementById("detailsC").value = "";
 		document.getElementById("priceC").value = "";
 		document.getElementById("imgURLC").value = "";
+		errorMsg.style.visibility = "hidden";
 		hideFormC();
 	}
 }
